@@ -2,6 +2,7 @@
 var express=require('express');
 const path=require('path');
 const app =express();
+require('dotenv').config();
 app.use(express.json());
 app.use(express.static(path.join(__dirname+'/dist/FrontEnd')));
 
@@ -12,7 +13,7 @@ const employeeModel = require('./model/employeeModel');
 
 //Task 2 : write api with error handling and appropriate api mentioned in the TODO below
 var mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://justinskurian:hijklmnop@cluster0.dorri.mongodb.net/employeeData")
+mongoose.connect(process.env.mongo_url)
     .then( () => {
         console.log('Database is Connected');
     })
